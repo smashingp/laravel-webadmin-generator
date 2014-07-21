@@ -7,14 +7,16 @@ require './includes/defines.include.php';
 
 $output = new Colors();
 
+// ================
 // install composer
-$output->println("Laravel Webadmin Generator v.0.2b","red");
+$output->println("Laravel Webadmin Generator v.0.2a","red");
 $output->println("BRMobile -- eduardo.lopes@brmobile.com.br -- (CC BY 4.0) 2014","light_red");
 $output->println(" ++ http://creativecommons.org/licenses/by/4.0/ ++","light_red");
 
 $compPath1 = [];
 $compPath2 = [];
 
+// =====================
 // Checking for composer
 exec("which composer > /dev/null", $compPath1, $status1);
 exec("which composer.phar > /dev/null", $compPath2, $status2);
@@ -35,6 +37,7 @@ if ($status1 == 1 && $status2 == 1 && $status3 == 1 && $status4 == 1) {
         system("curl -sS https://getcomposer.org/installer | php -- --filename=composer");
         $status3 = 0;
     } else {
+        // TODO: asks for path of composer, and quit if not suplied
         $output->println("\nTrying to continue... may crash big time.","light_green");
     }
 } else {
@@ -69,6 +72,12 @@ system($composer_require_exec);
 
 $output->println("\nDone updating composer requires","yellow");
 
+// =============
+// template copy
+// ===========================
+// TODO: multitemplate support
+// TODO: finish user CRUD
+// TODO: project icon and project name
 $output->println("\nCopying files: Template  [LTE Admin]","light_green");
 system("cp -R ../templates/views/lteadmin/app/views/* app/views/");
 
@@ -82,7 +91,9 @@ $output->println("\nDone copying files","yellow");
 
 $output->println("\nConfiguring Laravel","light_green");
 
-
+// ==============================================================
+// start modifying default files, taken from latest laravel build
+// ==================
 // app/config/app.php
 $ip = getHostByName(getHostName());
 $output->prnt("\nServer host name: [$ip] ","light_blue");
@@ -95,8 +106,10 @@ system("./artisan key:generate");
 
 $output->println("\nDone updating app.php","yellow");
 
-
+// =======================
 // app/config/database.php
+// ========================================
+// TODO: support other databases than MySQL
 $output->println("\nConfiguring MySQL settings","light_green");
 $db_host = "localhost";
 $output->prnt("\nMySQL host name: [$db_host] ","light_blue");
@@ -132,7 +145,8 @@ file_put_contents("app/config/database.php", $tmp);
 
 $output->println("\nDone updating database.php","yellow");
 
-
+// =========
+// user seed
 $output->println("\nConfiguring main admin account","light_green");
 $admin_username = "admin";
 $output->prnt("Name: [$admin_username] ","light_blue");
@@ -152,12 +166,17 @@ file_put_contents("app/database/seeds/UsersTableSeeder.php", $tmp);
 
 $output->println("\nDone configuring main account","yellow");
 
-
+// ==============================================
+// database related tasks: migrations and seeding
 $output->println("\nRunning migrations and seeding db","light_green");
 system("./artisan -n migrate");
 system("./artisan -n db:seed");
 $output->println("\nDone with database","yellow");
 
+// ==========================
+// update storage permissions
+// ===============================================
+// TODO: get user:group to chown instead of 777ing
 $output->println("\nUpdating permissions","light_green");
 system("chmod -R 777 app/storage/");
 

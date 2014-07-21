@@ -122,15 +122,15 @@
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="glyphicon glyphicon-user"></i>
-                                <span>{{ $user->name }}<i class="caret"></i></span>
+                                <span>{{ $userauth->name }}<i class="caret"></i></span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header bg-light-blue">
-                                    <img src="{{ $user->photofullpath }}" class="img-circle" alt="User Image" />
+                                    <img src="{{ $userauth->photofullpath }}" class="img-circle" alt="User Image" />
                                     <p>
-                                        {{ $user->name }}
-                                        <small>Cadastrado em {{ date("m/Y",strtotime($user->created_at)) }}</small>
+                                        {{ $userauth->name }}
+                                        <small>Cadastrado em {{ date("m/Y",strtotime($userauth->created_at)) }}</small>
                                     </p>
                                 </li>
                                 <!-- Menu Footer-->

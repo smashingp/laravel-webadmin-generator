@@ -1,8 +1,8 @@
 @extends("layout/logado")
 @section("conteudo")
-<div class="box {{ ($user->gender=="M"?"box-primary":"box-danger") }}">
+<div class="box box-primary">
     <div class="box-header">
-        <h3 class="box-title">{{ ($user->status==-1?"<span class=\"label label-danger\">suspenso</span>":($user->status==0?"<span class=\"label label-warning\">inativo</span>":"<span class=\"label label-success\">ativo</span>")) }}<strong style="margin-left: 10px;margin-right:10px;">{{ $user->fullname }}</strong> <span class="fa {{ ($user->gender == 'F'?'bg-red fa-female':'bg-blue fa-male') }}"></span></h3>
+        <h3 class="box-title">{{ ($user->status==-1?"<span class=\"label label-danger\">suspenso</span>":($user->status==0?"<span class=\"label label-warning\">inativo</span>":"<span class=\"label label-success\">ativo</span>")) }}<strong style="margin-left: 10px;margin-right:10px;">{{ $user->name }}</strong></h3>
     </div><!-- /.box-header -->
     <!-- form start -->
     <form role="form">
@@ -12,14 +12,6 @@
                 <div class="row">
                     <div class="form-group col-lg-6">
                         <h4><strong>Email :</strong> {{ $user->email }}</h4>
-                    </div>
-                    <div class="form-group col-lg-4">
-                        <h4><strong>Idade :</strong> {{ $user->age }}</h4>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group col-lg-10" style="margin-left:-80px">
-                        <h4><strong>Facebook :</strong> {{ ($user->facebook_id==""?"Não associado":"<a href='http://www.facebook.com/".$user->facebook_id."' target='novo'>clique aqui</a>") }}</h4>
                     </div>
                 </div>
                 <div class="row">

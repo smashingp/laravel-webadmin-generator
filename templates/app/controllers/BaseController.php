@@ -6,9 +6,9 @@ class BaseController extends Controller {
 
     public function __construct() {
         $this->view_data['title'] = 'Dashboard';
-        $this->view_data['user']  = NULL;
+        $this->view_data['userauth']  = NULL;
         if(Auth::Check()) {
-            $this->view_data['user']    = Auth::user();
+            $this->view_data['userauth']    = Auth::user();
         } 
         $this->view_data["breadcrumb"] = "Dashboard";
         $this->view_data["section"]    = "Dashboard";

@@ -28,7 +28,7 @@
 @foreach ($users as $user)                    
                     <tr>
                         <td>{{ $user->id }}</td>
-                        <td><a href="{{ action('UsersController@show', $user->id) }}">{{ $user->fullname }}</a></td>
+                        <td><a href="{{ action('UsersController@show', $user->id) }}">{{ $user->name }}</a></td>
                         <td><a href="{{ action('UsersController@show', $user->id) }}">{{ $user->email }}</a></td>
                         <td>{{ $user->created_at->diffForHumans() }}</td>
                         <td>{{ ($user->status==-1?"<span class=\"label label-danger\">suspenso</span>":($user->status==0?"<span class=\"label label-warning\">inativo</span>":"<span class=\"label label-success\">ativo</span>")) }}</td>

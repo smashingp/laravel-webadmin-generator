@@ -31,7 +31,7 @@ class UsersController extends \BaseController {
     public function listAjax() {
         if(Request::ajax()) {
             $busca = Request::input('email_to');
-            $us1 = User::whereRaw("name LIKE '%$busca%' or surname LIKE '%$busca%' or email LIKE '%$busca%'")->get();
+            $us1 = User::whereRaw("name LIKE '%$busca%' or email LIKE '%$busca%'")->get();
             $us2 = compact("us1");
             return Response::json($us2)->header('Content-Type', 'application/json');
         } else {
