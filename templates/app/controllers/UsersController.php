@@ -123,6 +123,19 @@ class UsersController extends \BaseController {
      * @return Response
      */
     public function destroy($id) {
+         User::destroy($id);
+//        $user = User::findOrFail($id);
+//        if ($user->status == -1) {
+//            $user->status = 1;
+//        } else {
+//            $user->status = -1;
+//        }
+//
+//        $user->save();
+        return Redirect::route('users.index');
+    }
+
+    public function chgStatus($id) {
         // User::destroy($id);
         $user = User::findOrFail($id);
         if ($user->status == -1) {
@@ -133,6 +146,6 @@ class UsersController extends \BaseController {
 
         $user->save();
         return Redirect::route('users.index');
-    }
-
+    }    
+    
 }

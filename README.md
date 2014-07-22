@@ -2,7 +2,7 @@ laravel-webadmin-generator
 ==========================
 
 Quickly generates an WebAdmin Stub with laravel.
-The admin built upon LTE Admin (http://almsaeedstudio.com/AdminLTE/).
+Main admin template built upon LTE Admin (http://almsaeedstudio.com/AdminLTE/).
 
 Features
 ========
@@ -17,3 +17,10 @@ Pre-requisites
 - PHP 5.4+
 - Linux
 - MySQL, Apache
+
+Todo List
+=========
+- multitemplate support
+- finish user CRUD
+- support other databases than MySQL
+- get user:group to chown instead of 777ing

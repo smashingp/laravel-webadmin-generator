@@ -24,7 +24,7 @@
 
         <div class="box-footer clearfix">
             <a href="{{ route("users.index") }}" class="btn btn-primary pull-left"><i class="fa fa-arrow-circle-left"></i> Voltar</a>
-            <a data-method="delete" href="{{ route("users.destroy", $user->id) }}" class="btn btn-danger pull-right"> {{ ($user->status < 0?"<i class=\"fa fa-undo\"></i> Reativar":"<i class=\"fa fa-trash-o\"></i> Suspender") }}</a>
+            <a href="{{ route("users.status", $user->id) }}" class="btn btn-danger pull-right"> {{ ($user->status < 0?"<i class=\"fa fa-undo\"></i> Reativar":"<i class=\"fa fa-trash-o\"></i> Suspender") }}</a>
         </div>
     </form>
 </div><!-- /.box -->

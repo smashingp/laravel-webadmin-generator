@@ -77,7 +77,6 @@ $output->println("\nDone updating composer requires","yellow");
 // ===========================
 // TODO: multitemplate support
 // TODO: finish user CRUD
-// TODO: project icon and project name
 $output->println("\nCopying files: Template  [LTE Admin]","light_green");
 system("cp -R ../templates/views/lteadmin/app/views/* app/views/");
 
@@ -90,6 +89,17 @@ system("cp -R ../templates/views/lteadmin/public/* public/");
 $output->println("\nDone copying files","yellow");
 
 $output->println("\nConfiguring Laravel","light_green");
+
+// ========
+// App name
+$app_name = "WebAdmin";
+$output->prnt("\nApplication name: [$app_name] ","light_blue");
+getLineFromStdin($app_name);
+$content = file_get_contents("app/views/layout/header.blade.php");
+$tmp     = str_replace("__VIEW__LAYOUT__HEADER__APPNAME__", $app_name, $content);
+file_put_contents("app/views/layout/header.blade.php", $tmp);
+
+$output->println("\nDone updating layout/header.blade.php","yellow");
 
 // ==============================================================
 // start modifying default files, taken from latest laravel build

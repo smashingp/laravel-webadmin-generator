@@ -21,6 +21,7 @@ Route::group(array("before" => "auth"), function() {
     Route::any("/dashboard"      , array("as" => "dashboard"  , "uses" => "DashboardController@index"));
     Route::get("/logout"         , array("as" => "logout"     , "uses" => "LoginController@logout"));
     Route::post("/userslist"     , array("as" => "userslist"  , "uses" => "UsersController@listAjax"));
+    Route::get("/users/status/{id}"   , array("as" => "users.status","uses" => "UsersController@chgStatus"));
     
     // Restfull controllers
     Route::resource('users'     , 'UsersController');

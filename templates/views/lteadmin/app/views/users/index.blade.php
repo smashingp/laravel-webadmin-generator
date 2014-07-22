@@ -24,6 +24,7 @@
                         <th>email</th>
                         <th>Data Cadastro</th>
                         <th>Status</th>
+                        <th>Ações</th>
                     </tr>
 @foreach ($users as $user)                    
                     <tr>
@@ -32,6 +33,7 @@
                         <td><a href="{{ action('UsersController@show', $user->id) }}">{{ $user->email }}</a></td>
                         <td>{{ $user->created_at->diffForHumans() }}</td>
                         <td>{{ ($user->status==-1?"<span class=\"label label-danger\">suspenso</span>":($user->status==0?"<span class=\"label label-warning\">inativo</span>":"<span class=\"label label-success\">ativo</span>")) }}</td>
+                        <td><a href="{{ route("users.edit", $user->id) }}" class="btn btn-primary"><span class="fa fa-pencil"></span> editar</a> <a href="{{ route("users.destroy", $user->id) }}" class="btn btn-danger" data-method="delete"><span class="fa fa-trash-o"></span> apagar</a></td>
                     </tr>
 @endforeach
                 </table>

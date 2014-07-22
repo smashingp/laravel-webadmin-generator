@@ -1,8 +1,8 @@
         <!-- header logo: style can be found in header.less -->
         <header class="header">
-            <a href="/dashboard" class="logo">
+            <a href="/dashboard" class="logo" style="font-family: 'Source Sans Pro', sans-serif;">
                 <!-- Add the class icon to your logo image or logo icon to add the margining -->
-                <img src="/icon.png" style="margin-top:-6px;" /> Boo
+                <img src="/icon.png" style="margin-top:-6px; width: 40px;" /> __VIEW__LAYOUT__HEADER__APPNAME__
             </a>
             <!-- Header Navbar: style can be found in header.less -->
             <nav class="navbar navbar-static-top" role="navigation">
