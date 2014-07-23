@@ -12,7 +12,7 @@ class UsersController extends \BaseController {
         $busca = "";
         if (Request::has('q')) {
             $busca = Input::get('q');
-            $usuarios = User::whereRaw("name LIKE '%$busca%' or surname LIKE '%$busca%' or email LIKE '%$busca%'");
+            $usuarios = User::whereRaw("name LIKE '%$busca%' or email LIKE '%$busca%'");
             $usuarios = $usuarios->paginate(PAGINATION_USERS);
         } else {
             $usuarios = User::paginate(PAGINATION_USERS);

@@ -10,5 +10,5 @@
     <!-- SB Admin Scripts - Include with every page -->
     <script src="/js/sb-admin.js"></script>
 
-    <!-- laravel helper to form -->
-    <script src="/js/laravel/helpers.js" type="text/javascript"></script>
+    <!-- Page-Level Demo Scripts - Dashboard - Use for reference -->
+    <script src="/js/demo/dashboard-demo.js"></script>

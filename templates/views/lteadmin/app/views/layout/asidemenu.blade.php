@@ -17,10 +17,15 @@
                                 <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                             </a>
                         </li>
-                        <li {{ ($activemenu == 2?'class="active"':"") }}>
-                            <a href="/users">
+                        <li class="treeview {{ ($activemenu == 2?'active':"") }}">
+                            <a href="#">
                                 <i class="fa fa-users"></i> <span>Usuários</span>
+                                <i class="fa fa-angle-left pull-right"></i>
                             </a>
+                            <ul class="treeview-menu">
+                                <li><a href="{{ route("users.index") }}"><i class="fa fa-angle-double-right"></i> Listagem</a></li>
+                                <li><a href="{{ route("users.create") }}"><i class="fa fa-angle-double-right"></i> Cadastro</a></li>
+                            </ul>                            
                         </li>                            
                     </ul>
                 </section>

@@ -444,8 +444,3 @@
 </div>
 
 @stop
-
-@section("script")
-    <!-- Page-Level Demo Scripts - Dashboard - Use for reference -->
-    <script src="/js/demo/dashboard-demo.js"></script>
-@stop

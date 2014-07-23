@@ -10,8 +10,8 @@ $output = new Colors();
 // ================
 // install composer
 $output->println("Laravel Webadmin Generator v.0.2a","red");
-$output->println("BRMobile -- eduardo.lopes@brmobile.com.br -- (CC BY 4.0) 2014","light_red");
-$output->println(" ++ http://creativecommons.org/licenses/by/4.0/ ++","light_red");
+$output->println("MIT License (MIT) Copyright 2014 BRMobile (eduardo.lopes@brmobile.com.br)","light_red");
+$output->println(" ++ http://opensource.org/licenses/MIT ++","light_red");
 
 $compPath1 = [];
 $compPath2 = [];
@@ -81,7 +81,7 @@ $output->println("\nDone updating composer requires","yellow");
 $templates = [
     ["id" => 0, "name" => "LTE Admin", "path" => "lteadmin"],
     ["id" => 1, "name" => "SB Admin 2.0", "path" => "sbadmin2"],
-    ["id" => 2, "name" => "Devoops", "path" => "devoops"],
+    ["id" => 2, "name" => "Binary", "path" => "binary"],
 ];
 $choose    = -1;
 $output->println("\nAvailable templates","light_green");
@@ -114,11 +114,16 @@ $output->println("\nConfiguring Laravel","light_green");
 $app_name = "WebAdmin";
 $output->prnt("\nApplication name: [$app_name] ","light_blue");
 getLineFromStdin($app_name);
+
 $content = file_get_contents("app/views/layout/header.blade.php");
 $tmp     = str_replace("__VIEW__LAYOUT__HEADER__APPNAME__", $app_name, $content);
 file_put_contents("app/views/layout/header.blade.php", $tmp);
 
-$output->println("\nDone updating layout/header.blade.php","yellow");
+$content = file_get_contents("app/views/layout/nav.blade.php");
+$tmp     = str_replace("__VIEW__LAYOUT__HEADER__APPNAME__", $app_name, $content);
+file_put_contents("app/views/layout/nav.blade.php", $tmp);
+
+$output->println("\nDone updating app name","yellow");
 
 // ==============================================================
 // start modifying default files, taken from latest laravel build
