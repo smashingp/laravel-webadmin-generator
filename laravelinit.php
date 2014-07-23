@@ -1,6 +1,6 @@
 #!/usr/bin/php
 <?php
-
+// TODO: break routines into functions
 require './classes/Colors.class.php';
 require './includes/functions.include.php';
 require './includes/defines.include.php';
@@ -72,19 +72,38 @@ system($composer_require_exec);
 
 $output->println("\nDone updating composer requires","yellow");
 
+// TODO: finish user CRUD
+
 // =============
 // template copy
 // ===========================
-// TODO: multitemplate support
-// TODO: finish user CRUD
-$output->println("\nCopying files: Template  [LTE Admin]","light_green");
-system("cp -R ../templates/views/lteadmin/app/views/* app/views/");
+// TODO: finish multitemplate support
+$templates = [
+    ["id" => 0, "name" => "LTE Admin", "path" => "lteadmin"],
+    ["id" => 1, "name" => "SB Admin 2.0", "path" => "sbadmin2"],
+    ["id" => 2, "name" => "Devoops", "path" => "devoops"],
+];
+$choose    = -1;
+$output->println("\nAvailable templates","light_green");
+
+foreach ($templates as $template) {
+    $output->println("     [".$template["id"]."] ".$template["name"],"light_green");    
+}
+
+while($choose <= 0 || $choose > count($templates)) {
+    $choose = 0;
+    $output->println("Choose template (0-2): [0]","light_green");
+    getLineFromStdin($choose);
+}
+
+$output->println("\nCopying files: ".$templates[$choose]["name"],"light_green");
+system("cp -R ../templates/views/".$templates[$choose]["path"]."/app/views/* app/views/");
 
 $output->println("\nCopying files: Configs","light_green");
 system("cp -R ../templates/app/* app/");
 
 $output->println("\nCopying files: public assets","light_green");
-system("cp -R ../templates/views/lteadmin/public/* public/");
+system("cp -R ../templates/views/".$templates[$choose]["path"]."/public/* public/");
 
 $output->println("\nDone copying files","yellow");
 
@@ -157,6 +176,7 @@ $output->println("\nDone updating database.php","yellow");
 
 // =========
 // user seed
+// TODO: validate credentials... email and password are required
 $output->println("\nConfiguring main admin account","light_green");
 $admin_username = "admin";
 $output->prnt("Name: [$admin_username] ","light_blue");
